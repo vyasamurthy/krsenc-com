@@ -66,9 +66,8 @@ section{position:relative;padding:112px 0}
 .nav .wrap{display:flex;align-items:center;gap:28px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
 .mark{width:40px;height:40px;flex:none}
-.brand-t{display:inline-flex;flex-direction:column;align-items:flex-start}
-.brand-t b{font:500 30px/1 var(--fd);letter-spacing:.06em;color:var(--navy);padding-bottom:5px;border-bottom:2px solid var(--ochre)}
-.brand-t small{display:block;font:500 10.5px/1 var(--fm);letter-spacing:.14em;color:var(--slate);text-transform:uppercase;margin-top:6px}
+.brand-t{font:600 15px/1.1 var(--fs);letter-spacing:.02em}
+.brand-t small{display:block;font:400 10.5px/1.3 var(--fm);letter-spacing:.12em;color:var(--slate);text-transform:uppercase}
 .nav ul{display:flex;gap:24px;list-style:none;margin-left:auto}
 .nav ul a{font:500 14px/1 var(--fs);text-decoration:none;color:var(--slate);position:relative;padding:6px 0;transition:color .2s}
 .nav ul a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--ochre);transition:right .3s var(--ease)}
@@ -781,7 +780,8 @@ input[type=range]{width:100%;accent-color:var(--navy)}
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#top" aria-label="KRS Engineers and Contractors, home">
-<span class="brand-t"><b>KRS</b><small>Engineers and Contractors</small></span>
+      <svg class="mark" viewBox="0 0 40 40" aria-hidden="true"><rect x=".75" y=".75" width="38.5" height="38.5" fill="none" stroke="#1C2B4F" stroke-width="1.5"/><rect x="5" y="29" width="30" height="2" fill="#C98A2B"/><text x="20" y="24" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="14" font-weight="500" fill="#1C2B4F" letter-spacing=".5">KRS</text></svg>
+      <span class="brand-t">KRS Engineers<small>and Contractors</small></span>
     </a>
     <ul id="menu">
       <li><a href="#problem">Problem</a></li><li><a href="#journey">Journey</a></li>
@@ -1338,7 +1338,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
       <div><span>Office</span><b>Uttarahalli, Bengaluru, Karnataka</b></div>
     </div>
   </div>
-  <div class="foot"><div class="wrap"><span>&copy; 2026 KRS Engineers and Contractors &middot; Turnkey construction &middot; Engineering &middot; Interiors</span><span>v1.4.2</span></div></div>
+  <div class="foot"><div class="wrap"><span>&copy; 2026 KRS Engineers and Contractors &middot; Turnkey construction &middot; Engineering &middot; Interiors</span><span>v1.4.1</span></div></div>
 </footer>
 
 <a class="wa" id="waFloat" href="https://wa.me/919845134986?text=Hello%20KRS%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp KRS</a>
