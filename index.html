@@ -867,6 +867,95 @@ input[type=range]{width:100%;accent-color:var(--navy)}
 .hero-g .sheet{transform-origin:50% 0;will-change:transform}
 .hero{overflow:hidden;overflow:clip}
 
+/* ===== v1.9 ===== */
+/* quality gates */
+.gates{background:var(--paper2)}
+.gt-rail{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:44px}
+.gt-rail:before{content:"";position:absolute;left:8%;right:8%;top:27px;height:2px;background:var(--line)}
+.gt-rail .fill{position:absolute;left:8%;top:27px;height:2px;background:var(--ok);width:0;transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.gt-b{position:relative;background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 4px;color:var(--slate);font:inherit}
+.gt-b i{width:56px;height:56px;border:2px solid var(--line);background:var(--card);display:grid;place-items:center;font:500 12px/1 var(--fm);color:var(--slate);transition:.3s;position:relative}
+.gt-b i:after{content:"";position:absolute;inset:-2px;border:2px solid var(--ok);clip-path:inset(0 100% 0 0);transition:clip-path .6s}
+.gt-b.done i{color:var(--ok);background:#EAF2EC}.gt-b.done i:after{clip-path:inset(0 0 0 0)}
+.gt-b.on i{border-color:var(--navy);color:var(--navy);transform:translateY(-3px);box-shadow:0 10px 24px -14px rgba(28,43,79,.6)}
+.gt-b b{font:500 13px/1.3 var(--fb,inherit);color:var(--ink);text-align:center}
+.gt-b span{font:400 10.5px/1.3 var(--fm);letter-spacing:.08em;text-transform:uppercase}
+.gt-card{margin-top:34px;background:var(--card);border:1px solid var(--line);display:grid;grid-template-columns:1.5fr 1fr}
+.gt-list{padding:22px 26px;border-right:1px solid var(--line)}
+.gt-list h4{font:400 24px/1.2 var(--fd);color:var(--navy);margin-bottom:4px}
+.gt-list p.s{font-size:14px;color:var(--slate);margin-bottom:14px}
+.gt-ck{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:9px 0;border-top:1px solid #EEE8DC;font-size:14.5px;color:#2A3142}
+.gt-ck .bx{width:16px;height:16px;border:1.5px solid #B8AE9C;margin-top:3px;position:relative;transition:.25s}
+.gt-ck.ok .bx{border-color:var(--ok);background:var(--ok)}
+.gt-ck.ok .bx:after{content:"";position:absolute;left:4px;top:0;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.gt-ck small{display:block;font-size:12.5px;color:var(--slate);margin-top:2px}
+.gt-ck em{font:500 10px/1.4 var(--fm);letter-spacing:.08em;text-transform:uppercase;color:var(--ochre-d);font-style:normal;white-space:nowrap;padding-top:3px}
+.gt-pay{padding:22px 26px;display:flex;flex-direction:column;gap:16px;background:var(--paper)}
+.gt-pay h6,.dd h6,.ro h6{font:500 10.5px/1 var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.gt-vault{position:relative;height:120px;border:1px solid var(--line);background:#fff;overflow:hidden}
+.gt-vault .gd{position:absolute;inset:0 50% 0 0;background:var(--navy);transition:transform .8s cubic-bezier(.6,0,.2,1);display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#AEB4C2;font:500 10px/1 var(--fm);letter-spacing:.1em}
+.gt-vault .gd.r{inset:0 0 0 50%;justify-content:flex-start;padding:0 0 0 10px}
+.gt-vault.open .gd{transform:translateX(-100%)}.gt-vault.open .gd.r{transform:translateX(100%)}
+.gt-vault .gm{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font:400 19px/1.25 var(--fd);color:var(--ok);padding:0 14px}
+.gt-stat{font-size:14px;color:#2A3142}.gt-stat b{font:400 34px/1 var(--fd);color:var(--navy);display:block;margin-bottom:4px}
+.gt-run{align-self:flex-start}
+/* decide-by */
+.dd{border-top:1px solid var(--line);padding:18px 20px;background:var(--card)}
+.dd-h{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;justify-content:space-between;margin-bottom:12px}
+.dd-h p{font-size:14.5px;color:#2A3142;max-width:70ch}.dd-h p b{color:var(--brick);font-weight:500}
+.dd-l{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+.dd-i{padding:12px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;gap:3px;position:relative}
+.dd-i:nth-child(3n){border-right:0}
+.dd-i .d{font:500 11px/1 var(--fm);letter-spacing:.06em;color:var(--ochre-d)}
+.dd-i b{font-weight:500;font-size:14.5px;color:var(--ink)}
+.dd-i small{font-size:12.5px;color:var(--slate)}
+.dd-i .in{font:400 10.5px/1 var(--fm);color:var(--slate);position:absolute;right:12px;top:12px}
+.dd-i.soon{background:#FBF3E4}.dd-i.soon .in{color:var(--brick)}
+.dd-a{display:flex;gap:18px;margin-top:12px;flex-wrap:wrap}
+/* remote owner */
+.ro{background:var(--ink);color:#C9CDD6}
+.ro h2{color:#fff}.ro h2 em{color:var(--ochre-l)}.ro .lede{color:#AEB4C2}.ro .eyebrow{color:var(--ochre-l)}
+.ro-g{display:grid;grid-template-columns:420px 1fr;gap:48px;margin-top:44px;align-items:start}
+.ro-dial{position:relative}
+.ro-dial svg{width:100%;height:auto;display:block}
+.ro-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.ro-c b{font:400 40px/1 var(--fd);color:#fff}.ro-c span{font:500 10.5px/1.5 var(--fm);letter-spacing:.1em;text-transform:uppercase;color:#8E97AB}
+.ro-sel{display:flex;gap:12px;align-items:center;margin-bottom:18px;flex-wrap:wrap}
+.ro-sel select{font:500 13px/1 var(--fm);padding:9px 10px;background:#18213A;color:#fff;border:1px solid #2A3550}
+.ro-key{display:flex;gap:18px;font:500 10.5px/1 var(--fm);letter-spacing:.08em;text-transform:uppercase;color:#8E97AB;margin-top:10px;flex-wrap:wrap;justify-content:center}
+.ro-key i{display:inline-block;width:12px;height:8px;margin-right:6px;vertical-align:middle}
+.ro-rows{display:grid;gap:0;border-top:1px solid #2A3550}
+.ro-r{display:grid;grid-template-columns:1fr 170px;gap:16px;padding:14px 0;border-bottom:1px solid #2A3550;align-items:baseline}
+.ro-r b{color:#fff;font-weight:500;font-size:15px;display:block}.ro-r small{font-size:13px;color:#8E97AB}
+.ro-r .t{font:500 13px/1.4 var(--fm);color:var(--ochre-l);text-align:right}
+.ro-best{margin-top:18px;padding:14px 16px;border:1px solid #3A4766;font-size:15px;color:#E4E7EE}.ro-best b{color:var(--ochre-l);font-weight:500}
+/* faq */
+.faq-g{display:grid;grid-template-columns:1fr 1.6fr;gap:56px;align-items:start}
+.faq-l details{border-top:1px solid var(--line)}
+.faq-l details:last-child{border-bottom:1px solid var(--line)}
+.faq-l summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font:400 20px/1.3 var(--fd);color:var(--navy);position:relative}
+.faq-l summary::-webkit-details-marker{display:none}
+.faq-l summary:after{content:"";position:absolute;right:6px;top:26px;width:10px;height:10px;border:solid var(--ochre);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);transition:transform .3s}
+.faq-l details[open] summary:after{transform:rotate(-135deg);top:30px}
+.faq-l .a{padding:0 0 20px;font-size:15.5px;color:#2A3142;max-width:68ch;animation:faqIn .35s ease}
+.faq-l .a a{color:var(--navy);border-bottom:1px solid var(--ochre);text-decoration:none}
+@keyframes faqIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.faq-s{position:sticky;top:100px}
+.faq-s input{width:100%;font:400 15px/1 var(--fb,inherit);padding:12px 14px;border:1px solid var(--line);background:#fff;margin-top:22px}
+.faq-s .n{font:500 10.5px/1 var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-top:10px}
+@media (max-width:980px){
+  .gt-card{grid-template-columns:1fr}.gt-list{border-right:0;border-bottom:1px solid var(--line)}
+  .dd-l{grid-template-columns:1fr 1fr}.dd-i:nth-child(3n){border-right:1px solid var(--line)}.dd-i:nth-child(2n){border-right:0}
+  .ro-g{grid-template-columns:1fr}.ro-dial{max-width:380px;margin:0 auto}
+  .faq-g{grid-template-columns:1fr;gap:10px}.faq-s{position:static}
+}
+@media (max-width:680px){
+  .gt-rail{grid-template-columns:repeat(3,1fr);row-gap:20px}.gt-rail:before,.gt-rail .fill{display:none}
+  .gt-ck{grid-template-columns:22px 1fr}.gt-ck em{grid-column:2}
+  .dd-l{grid-template-columns:1fr}.dd-i{border-right:0!important}
+  .ro-r{grid-template-columns:1fr}.ro-r .t{text-align:left}
+}
+
 /* responsive */
 @media (max-width:1020px){
   .pv-g{grid-template-columns:1fr 1fr}.pv-g>*:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid #2A3550}
@@ -921,6 +1010,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
   .reveal{opacity:1;transform:none}
 }
 </style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why is there no price per square foot on this site?", "acceptedAnswer": {"@type": "Answer", "text": "A per-square-foot rate only means something once the scope behind it is written down: which cement and steel, which tiles, which fittings, what is excluded. We visit the site, read the drawings or the brief, and give you an itemised estimate you can compare line by line. Use the project brief to start."}}, {"@type": "Question", "name": "How long does a house take to build in Bengaluru?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on size, floors and when the frame meets the June to September rains. The timeline on this page scales to your plot and start month and shows the monsoon effect. We confirm the programme after the site visit."}}, {"@type": "Question", "name": "Do I need a soil test?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend one before the foundation is designed. Bengaluru soils vary from hard murram to filled ground within a few streets, and the footing type, depth and cost follow from the result. It is the first check at our design-freeze gate."}}, {"@type": "Question", "name": "Do you help with plan sanction and approvals?", "acceptedAnswer": {"@type": "Answer", "text": "We check where your approvals stand at the first visit, tell you what is pending and what it means for the start date, and prepare the drawings the application needs. The approval itself is issued by the authority for your area."}}, {"@type": "Question", "name": "How are payments linked to the work?", "acceptedAnswer": {"@type": "Answer", "text": "Each instalment follows a signed quality gate: design freeze, foundation, each slab, services, finishes and handover. The final instalment is due after you walk the building with us. See what we check before you pay."}}, {"@type": "Question", "name": "Can I build while living abroad or in another city?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You get weekly updates on WhatsApp, a video walk at each gate, and every test record and photograph in your Home Passport. See the build on your clock."}}, {"@type": "Question", "name": "Will work stop during the monsoon?", "acceptedAnswer": {"@type": "Answer", "text": "Structural work slows, it does not stop. We plan the frame to be up before June where we can, and move indoor services and finishing into the wet months. The timeline shows the effect for your start month."}}, {"@type": "Question", "name": "What do I receive at handover?", "acceptedAnswer": {"@type": "Answer", "text": "The keys, as-built drawings, test records, the photographs of every wall before plaster, warranty documents and service contacts, all in your Home Passport."}}, {"@type": "Question", "name": "Do you take on interiors or a single discipline only?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We take interior fit-outs and individual disciplines, though owners save the most time when civil, plumbing, electrical, HVAC and interiors are planned together."}}, {"@type": "Question", "name": "Which areas do you work in?", "acceptedAnswer": {"@type": "Answer", "text": "Bengaluru and across Karnataka, with residential, commercial, retail, office and hospitality projects. Our office is in Uttarahalli, south Bengaluru."}}]}</script>
 </head>
 <body>
 
@@ -932,10 +1022,11 @@ input[type=range]{width:100%;accent-color:var(--navy)}
     <ul id="menu">
       <li><a href="#problem">Problem</a></li><li><a href="#journey">Journey</a></li>
       <li><a href="#pulse">Live site</a></li>
+      <li><a href="#quality">Quality</a></li>
       <li><a href="#planner">Plot planner</a></li>
       <li><a href="#passport">Passport</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#insights">Insights</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a class="btn btn-p" href="#brief">Start a project brief <span class="arrow">&rarr;</span></a>
@@ -1096,6 +1187,27 @@ input[type=range]{width:100%;accent-color:var(--navy)}
   </div>
 </section>
 
+<!-- QUALITY GATES -->
+<section class="gates" id="quality">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">What we check before you pay</div>
+      <h2>Six gates. <em>No instalment moves until the gate before it is signed.</em></h2>
+      <p class="lede">Most disputes on a building start with a payment made against work nobody inspected. Every stage of a KRS build closes with a written check, a test record or a photograph, and that record goes into your Home Passport before the next instalment is due.</p>
+    </div>
+    <div class="gt-rail reveal d2" id="gtRail"><span class="fill" id="gtFill"></span></div>
+    <div class="gt-card reveal d2">
+      <div class="gt-list" id="gtList"></div>
+      <div class="gt-pay">
+        <h6>The instalment for this stage</h6>
+        <div class="gt-vault" id="gtVault"><div class="gm" id="gtMsg">Released to KRS</div><div class="gd">HELD</div><div class="gd r">PENDING</div></div>
+        <div class="gt-stat"><b id="gtN">0</b>checks across six gates, each signed by the site engineer and filed with a photograph or test record.</div>
+        <button class="btn btn-p gt-run" id="gtRun">Walk this gate <span class="arrow">&rarr;</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section id="process">
   <div class="wrap">
@@ -1121,6 +1233,11 @@ input[type=range]{width:100%;accent-color:var(--navy)}
       </div>
       <div class="g-detail" id="gDetail"></div>
       <div class="tl-note"><span id="tlNote"></span> <button class="jr-try" id="tlUse" style="margin:0 0 0 6px;border:0;border-bottom:1px solid var(--ochre);background:none">Add this timeline to my brief &rarr;</button></div>
+      <div class="dd" id="dd">
+        <div class="dd-h"><h6>Decide by &middot; your choices on this timeline</h6><p id="ddCost"></p></div>
+        <div class="dd-l" id="ddL"></div>
+        <div class="dd-a"><button class="jr-try" id="ddIcs" style="margin:0;border:0;border-bottom:1px solid var(--ochre);background:none">Add these dates to my calendar &rarr;</button><button class="jr-try" id="ddBrief" style="margin:0;border:0;border-bottom:1px solid var(--ochre);background:none">Put them in my brief &rarr;</button></div>
+      </div>
       <div class="g-note">Indicative timeline. Durations scale with the size set in the plot planner or brief, and the frame slows when it runs through the monsoon. Actual durations depend on scope, approvals and site conditions and are confirmed at planning stage.</div>
     </div>
 
@@ -1484,6 +1601,29 @@ input[type=range]{width:100%;accent-color:var(--navy)}
   </div>
 </section>
 
+<!-- REMOTE OWNER -->
+<section class="ro" id="remote">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="eyebrow">Building from another city or country</div>
+      <h2>Your site is in Bengaluru. Your day is not. <em>We line the build up with your clock.</em></h2>
+      <p class="lede">Owners who live away either fly in at every stage or trust what they are told on the phone. Pick where you live and see when the office is reachable in your time, and when each update lands.</p>
+    </div>
+    <div class="ro-g">
+      <div class="ro-dial reveal d2">
+        <svg id="roDial" viewBox="0 0 400 400" role="img" aria-label="24-hour dial comparing your waking hours with KRS office hours in India."></svg>
+        <div class="ro-c"><b id="roNow">--:--</b><span id="roCity">Your time</span><span id="roIst" style="margin-top:6px;color:var(--ochre-l)"></span></div>
+        <div class="ro-key"><span><i style="background:#3A4766"></i>Your waking hours</span><span><i style="background:var(--ochre)"></i>KRS office open</span><span><i style="background:#7FC3A0"></i>Overlap</span></div>
+      </div>
+      <div class="reveal d3">
+        <div class="ro-sel"><h6>I live in</h6><select id="roTz" aria-label="Your city"></select></div>
+        <div class="ro-rows" id="roRows"></div>
+        <div class="ro-best" id="roBest"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- LEADERSHIP -->
 <section id="leadership">
   <div class="wrap lead-g">
@@ -1518,6 +1658,19 @@ input[type=range]{width:100%;accent-color:var(--navy)}
 </section>
 </main>
 
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap faq-g">
+    <div class="faq-s reveal">
+      <div class="eyebrow">Questions owners ask</div>
+      <h2>Straight answers, <em>before the first site visit.</em></h2>
+      <input id="faqQ" type="search" placeholder="Search: soil, approvals, monsoon, payment" aria-label="Search questions">
+      <div class="n" id="faqN"></div>
+    </div>
+    <div class="faq-l reveal d2" id="faqL"></div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <footer class="contact" id="contact">
   <div class="wrap ct-g">
@@ -1533,7 +1686,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
       <a href="https://www.google.com/maps/search/?api=1&amp;query=Krishna+Kamala+Enclave+Uttarahalli+Bengaluru+560061" target="_blank" rel="noopener"><span>Office</span><b>#52, &ldquo;Ahobala&rdquo;, Krishna Kamala Enclave, Uttarahalli, Bengaluru 560 061</b></a>
     </div>
   </div>
-  <div class="foot"><div class="wrap"><span>&copy; 2026 KRS Engineers and Contractors &middot; Turnkey construction &middot; Engineering &middot; Interiors</span><span>v1.8.0</span></div></div>
+  <div class="foot"><div class="wrap"><span>&copy; 2026 KRS Engineers and Contractors &middot; Turnkey construction &middot; Engineering &middot; Interiors</span><span>v1.9.0</span></div></div>
 </footer>
 
 <a class="wa" id="waFloat" href="https://wa.me/919845134986?text=Hello%20KRS%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp KRS</a>
@@ -2677,6 +2830,153 @@ ostat();setInterval(ostat,60000);
     sh.style.transform=p<.002?'':'perspective(1200px) rotateX('+(p*32)+'deg) rotateZ('+(-p*7)+'deg) translateY('+(p*60)+'px) scale('+(1-p*.14)+')';
     sh.style.opacity=1-p*.55}
   addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(f)}},{passive:true});f()})();
+
+var FAQ=[["Why is there no price per square foot on this site?", "A per-square-foot rate only means something once the scope behind it is written down: which cement and steel, which tiles, which fittings, what is excluded. We visit the site, read the drawings or the brief, and give you an itemised estimate you can compare line by line. Use the <a href=\"#brief\">project brief</a> to start."], ["How long does a house take to build in Bengaluru?", "It depends on size, floors and when the frame meets the June to September rains. The <a href=\"#process\">timeline</a> on this page scales to your plot and start month and shows the monsoon effect. We confirm the programme after the site visit."], ["Do I need a soil test?", "We recommend one before the foundation is designed. Bengaluru soils vary from hard murram to filled ground within a few streets, and the footing type, depth and cost follow from the result. It is the first check at our design-freeze gate."], ["Do you help with plan sanction and approvals?", "We check where your approvals stand at the first visit, tell you what is pending and what it means for the start date, and prepare the drawings the application needs. The approval itself is issued by the authority for your area."], ["How are payments linked to the work?", "Each instalment follows a signed quality gate: design freeze, foundation, each slab, services, finishes and handover. The final instalment is due after you walk the building with us. See <a href=\"#quality\">what we check before you pay</a>."], ["Can I build while living abroad or in another city?", "Yes. You get weekly updates on WhatsApp, a video walk at each gate, and every test record and photograph in your Home Passport. <a href=\"#remote\">See the build on your clock</a>."], ["Will work stop during the monsoon?", "Structural work slows, it does not stop. We plan the frame to be up before June where we can, and move indoor services and finishing into the wet months. The timeline shows the effect for your start month."], ["What do I receive at handover?", "The keys, as-built drawings, test records, the photographs of every wall before plaster, warranty documents and service contacts, all in your <a href=\"#passport\">Home Passport</a>."], ["Do you take on interiors or a single discipline only?", "Yes. We take interior fit-outs and individual disciplines, though owners save the most time when civil, plumbing, electrical, HVAC and interiors are planned together."], ["Which areas do you work in?", "Bengaluru and across Karnataka, with residential, commercial, retail, office and hospitality projects. Our office is in Uttarahalli, south Bengaluru."]];
+/* ---------- v1.9: quality gates ---------- */
+var GATES=[
+ {n:'Design freeze',s:'Before work starts',d:'No excavation until the drawings agree with each other and with the soil.',c:[
+  ['Soil investigation reviewed for the foundation design','Bearing capacity and water table checked against the footing type','Report'],
+  ['Structural drawings checked against the architectural plan','Column positions, beam depths and openings reconciled','Signed'],
+  ['Plumbing, electrical and HVAC routes clash-checked','Sleeves and cut-outs marked on the structural set','Drawing'],
+  ['Quantities issued against the frozen drawings','So the estimate and the build describe the same building','Record'],
+  ['Owner signs every sheet','Changes after this point are logged with their cost and time','Signed']]},
+ {n:'Foundation',s:'Below ground',d:'The part of the building nobody sees again. Checked before it is covered.',c:[
+  ['Excavation depth and founding strata verified','Against the design level, before any concrete','Photo'],
+  ['Anti-termite treatment before backfill','Chemical, dosage and area recorded','Record'],
+  ['Footing reinforcement: bar size, spacing, cover blocks','Checked against the bar bending schedule','Photo'],
+  ['Concrete slump tested at the pour','A load that fails is turned away, not used','Test'],
+  ['Cube samples cast for 7 and 28 day strength','Lab results filed in the passport','Test'],
+  ['Plinth level and diagonals checked','Square and level before the frame rises','Signed']]},
+ {n:'Frame',s:'Every slab',d:'Each floor is a separate gate. Nothing is poured until the floor below is signed.',c:[
+  ['Columns checked for plumb and position','Before shuttering closes','Photo'],
+  ['Shuttering level, props and joints','A leaking form becomes honeycombed concrete','Signed'],
+  ['Slab reinforcement and cover blocks','Top and bottom bars, laps and chairs','Photo'],
+  ['Conduits, sleeves and drain points placed before the pour','So nobody cuts the slab later','Photo'],
+  ['Slump and cubes for every pour','Each pour traceable to its test record','Test'],
+  ['Curing logged daily','Wet curing for the specified period, not "when we remember"','Record']]},
+ {n:'Services',s:'Before walls close',d:'Once plaster goes on, a hidden leak or loose joint costs ten times as much to reach.',c:[
+  ['Water lines pressure-tested and held','No drop in pressure over the test period','Test'],
+  ['Drainage slopes and flow tested','Every trap and floor drain','Test'],
+  ['Wiring gauge matched to each circuit','Checked against the load schedule','Signed'],
+  ['Insulation resistance tested on every circuit','Megger readings filed','Test'],
+  ['Earthing resistance measured','At each earth pit','Test'],
+  ['Every wall photographed before plaster','The passport shows where every pipe and wire runs','Photo']]},
+ {n:'Envelope & finishes',s:'Weather and surface',d:'Bengaluru rain finds every gap. Wet areas and the terrace are flooded on purpose.',c:[
+  ['Terrace and bathroom ponding test','Water held for days before tiling','Test'],
+  ['Plaster checked for line, level and cracks','Before paint or tile','Signed'],
+  ['Tiles tap-tested for hollow spots','Hollow tiles are relaid, not grouted over','Signed'],
+  ['Doors and windows: fit, gaps, operation','Every shutter opened and locked','Signed'],
+  ['Paint coats and surface checked','Primer, putty and finish coats recorded','Record']]},
+ {n:'Handover',s:'The last gate',d:'The final instalment is due after you walk the building, not before.',c:[
+  ['Snag walk with the owner','Every item listed, fixed and re-walked','Signed'],
+  ['Every fixture, switch and tap operated','Room by room','Signed'],
+  ['Distribution boards labelled','Circuit by circuit','Photo'],
+  ['As-built drawings and test records handed over','In the Home Passport','Record'],
+  ['Warranty documents and service contacts','Filed by trade','Record']]}
+];
+(function(){
+  var rail=$('#gtRail'),list=$('#gtList'),cur=0,busy=false,done={},tot=0;
+  GATES.forEach(function(g,i){tot+=g.c.length;var b=document.createElement('button');b.className='gt-b';b.innerHTML='<i>G'+(i+1)+'</i><b>'+g.n+'</b><span>'+g.s+'</span>';b.addEventListener('click',function(){if(!busy)show(i)});rail.appendChild(b)});
+  function show(i){cur=i;var g=GATES[i];$$('.gt-b',rail).forEach(function(b,k){b.classList.toggle('on',k===i)});
+    list.innerHTML='<h4>Gate '+(i+1)+' &middot; '+g.n+'</h4><p class="s">'+g.d+'</p>'+g.c.map(function(c){return '<div class="gt-ck'+(done[i]?' ok':'')+'"><span class="bx"></span><div>'+c[0]+'<small>'+c[1]+'</small></div><em>'+c[2]+'</em></div>'}).join('');
+    $('#gtVault').classList.toggle('open',!!done[i]);
+    $('#gtMsg').textContent=i===5?'Final instalment released after your walk':'Instalment for this stage released';
+    $('#gtRun').innerHTML=done[i]?(i<5?'Next gate <span class="arrow">&rarr;</span>':'Walk again <span class="arrow">&rarr;</span>'):'Walk this gate <span class="arrow">&rarr;</span>';}
+  function run(){if(busy)return;if(done[cur]&&cur<5){show(cur+1);return}
+    busy=true;done[cur]=false;show(cur);var cks=$$('.gt-ck',list),k=0,step=RM?0:170;
+    (function tick(){if(k<cks.length){cks[k].classList.add('ok');k++;setTimeout(tick,step);return}
+      setTimeout(function(){done[cur]=true;$('#gtVault').classList.add('open');$$('.gt-b',rail)[cur].classList.add('done');
+        var hi=0;for(var j=0;j<6;j++)if(done[j])hi=j;$('#gtFill').style.width=(hi/5*84)+'%';busy=false;show(cur)},step*2)})();}
+  $('#gtRun').addEventListener('click',run);
+  show(0);
+  var seen=false;new IntersectionObserver(function(e){if(e[0].isIntersecting&&!seen){seen=true;countTo($('#gtN'),tot,900);setTimeout(run,600)}},{threshold:.35}).observe($('#gtList'));
+})();
+
+/* ---------- v1.9: decide-by dates ---------- */
+var DD=[
+ ['Sign off the floor plan','Rooms, stairs and openings',function(s){return s[1][0]+(s[1][1]-s[1][0])*.35}],
+ ['Approve the full drawing set','Structure and services agreed',function(s){return s[1][1]-.5}],
+ ['Fix the kitchen layout','Sink, hob and appliance points',function(s){return s[3][0]+1}],
+ ['Fix switch, light and socket positions','Conduits go into the slab',function(s){return s[3][0]+1.5}],
+ ['Choose sanitaryware and concealed fittings','Diverters and traps sit in the wall',function(s){return s[3][0]+3}],
+ ['Choose doors and windows','Frames have a lead time of weeks',function(s){return s[4][0]-6}],
+ ['Choose floor and wall tiles','Ordered before plaster is complete',function(s){return s[4][0]-4}],
+ ['Choose paint colours','Before the finish coats',function(s){return s[4][0]+(s[4][1]-s[4][0])*.5}],
+ ['Walk the snag list with us','The last gate before the keys',function(s){return s[5][0]+.5}]
+];
+var ddRows=[];
+function ddRender(){
+  var el=$('#ddL');if(!el)return;var P=tlPlan('int'),now=istNow();
+  ddRows=DD.map(function(d){var w=Math.max(0,d[2](P.st));return{n:d[0],s:d[1],dt:wkDate(P.y,P.m,w)}});
+  el.innerHTML=ddRows.map(function(r){var wk=Math.round((r.dt-now)/6048e5),cls=wk<=6?' soon':'';
+    return '<div class="dd-i'+cls+'"><span class="d">'+r.dt.getDate()+' '+MN[r.dt.getMonth()]+' '+r.dt.getFullYear()+'</span><span class="in">'+(wk<=0?'now':'in '+wk+' wk')+'</span><b>'+r.n+'</b><small>'+r.s+'</small></div>'}).join('');
+  var w=typeof dcWeekly==='function'?dcWeekly():0;
+  $('#ddCost').innerHTML='A decision made late stops the trade waiting on it. At the numbers in your delay calculator, each week a choice slips costs about <b>'+inr(w)+'</b>.';
+}
+(function(){
+  var _dg=drawG;drawG=function(){_dg();ddRender()};
+  ddRender();
+  $('#ddIcs').addEventListener('click',function(){
+    function f(d){return d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')}
+    var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//KRS Engineers and Contractors//Decide-by//EN','CALSCALE:GREGORIAN'];
+    ddRows.forEach(function(r,i){var e=new Date(r.dt.getTime()+864e5);L.push('BEGIN:VEVENT','UID:krs-dd-'+i+'-'+f(r.dt)+'@krsenc.com','DTSTAMP:'+f(new Date())+'T000000Z','DTSTART;VALUE=DATE:'+f(r.dt),'DTEND;VALUE=DATE:'+f(e),'SUMMARY:KRS build: '+r.n,'DESCRIPTION:'+r.s+'. Indicative date from krsenc.com; confirm with your site engineer.','END:VEVENT')});
+    L.push('END:VCALENDAR');
+    var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.join('\r\n')],{type:'text/calendar'}));a.download='krs-decide-by.ics';document.body.appendChild(a);a.click();a.remove();
+  });
+  $('#ddBrief').addEventListener('click',function(){B.notes=(B.notes?B.notes+'\n':'')+'Decide-by: '+ddRows.map(function(r){return r.n+' by '+r.dt.getDate()+' '+MN[r.dt.getMonth()]}).join('; ');var nt=$('#notes');if(nt)nt.value=B.notes;renderDoc(true);document.getElementById('brief').scrollIntoView({behavior:RM?'auto':'smooth'})});
+  ['dcCost','dcLoan','dcRate','dcRent','dcPay'].forEach(function(id){var x=document.getElementById(id);if(x)x.addEventListener('input',ddRender)});
+})();
+
+/* ---------- v1.9: remote owner ---------- */
+(function(){
+  var TZ=[['Asia/Dubai','Dubai'],['Asia/Riyadh','Riyadh'],['Asia/Qatar','Doha'],['Asia/Singapore','Singapore'],['Europe/London','London'],['Europe/Berlin','Frankfurt'],['America/New_York','New York'],['America/Chicago','Dallas'],['America/Los_Angeles','San Francisco'],['America/Toronto','Toronto'],['Australia/Sydney','Sydney'],['Asia/Kolkata','India']];
+  var sel=$('#roTz'),me='';try{me=Intl.DateTimeFormat().resolvedOptions().timeZone}catch(e){}
+  if(me&&!TZ.some(function(t){return t[0]===me}))TZ.unshift([me,'My time zone ('+me.split('/').pop().replace(/_/g,' ')+')']);
+  TZ.forEach(function(t){var o=document.createElement('option');o.value=t[0];o.textContent=t[1];sel.appendChild(o)});
+  var saved=null;try{saved=localStorage.getItem('krsTz')}catch(e){}
+  sel.value=saved&&TZ.some(function(t){return t[0]===saved})?saved:(me&&me!=='Asia/Kolkata'?me:'Asia/Dubai');
+  function off(tz,d){var a=new Date(d.toLocaleString('en-US',{timeZone:tz})),b=new Date(d.toLocaleString('en-US',{timeZone:'UTC'}));return Math.round((a-b)/6e4)}
+  function fmt(d,tz,o){return d.toLocaleString('en-GB',Object.assign({timeZone:tz},o))}
+  function istToReal(d){return new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate(),d.getHours(),d.getMinutes())-330*6e4)}
+  function nextIst(day,h,m){var n=istNow(),d=new Date(n.getFullYear(),n.getMonth(),n.getDate(),h,m);var add=(day-d.getDay()+7)%7;if(add===0&&d<=n)add=7;d.setDate(d.getDate()+add);return istToReal(d)}
+  function arc(cx,cy,r,a0,a1){var p=function(a){var t=(a/24*360-90)*Math.PI/180;return[cx+r*Math.cos(t),cy+r*Math.sin(t)]},s=p(a0),e=p(a1),lg=((a1-a0+24)%24)>12?1:0;return 'M'+s[0].toFixed(1)+' '+s[1].toFixed(1)+' A'+r+' '+r+' 0 '+lg+' 1 '+e[0].toFixed(1)+' '+e[1].toFixed(1)}
+  function band(a0,a1,r,w,col){a0=(a0%24+24)%24;a1=(a1%24+24)%24;if(Math.abs(a1-a0)<.01)return '';return '<path d="'+arc(200,200,r,a0,a1)+'" fill="none" stroke="'+col+'" stroke-width="'+w+'"/>'}
+  function render(){
+    var tz=sel.value,now=new Date(),d=(off(tz,now)-330)/60,name=sel.options[sel.selectedIndex].textContent;
+    try{localStorage.setItem('krsTz',tz)}catch(e){}
+    var o0=OFFICE.open+d,o1=OFFICE.close+d,W0=7,W1=23;
+    var s='<circle cx="200" cy="200" r="168" fill="none" stroke="#1E2842" stroke-width="22"/><circle cx="200" cy="200" r="138" fill="none" stroke="#1E2842" stroke-width="14"/>';
+    for(var h=0;h<24;h++){var t=(h/24*360-90)*Math.PI/180,r1=h%6?186:182,r2=194;s+='<line x1="'+(200+r1*Math.cos(t)).toFixed(1)+'" y1="'+(200+r1*Math.sin(t)).toFixed(1)+'" x2="'+(200+r2*Math.cos(t)).toFixed(1)+'" y2="'+(200+r2*Math.sin(t)).toFixed(1)+'" stroke="#5B6274" stroke-width="'+(h%6?1:2)+'"/>';if(h%6===0)s+='<text x="'+(200+108*Math.cos(t)).toFixed(1)+'" y="'+(204+108*Math.sin(t)).toFixed(1)+'" text-anchor="middle" font-family="IBM Plex Mono" font-size="11" fill="#8E97AB">'+String(h).padStart(2,'0')+'</text>'}
+    s+=band(W0,W1,168,22,'#3A4766')+band(o0,o1,138,14,'#C98A2B');
+    // overlap
+    var ov=[];for(var m=0;m<1440;m+=15){var lh=m/60,ih=((lh-d)%24+24)%24,wk=lh>=W0&&lh<W1,of=ih>=OFFICE.open&&ih<OFFICE.close;if(wk&&of)ov.push(lh)}
+    var segs=[];if(ov.length){var st=ov[0],pv=ov[0];ov.slice(1).concat([999]).forEach(function(x){if(x-pv>.26){segs.push([st,pv+.25]);st=x}pv=x});segs.forEach(function(g){s+=band(g[0],g[1],168,22,'#7FC3A0')})}
+    var lt=now.toLocaleString('en-US',{timeZone:tz,hour:'numeric',minute:'numeric',hour12:false}).split(':'),lh2=(+lt[0]%24)+(+lt[1])/60,ta=(lh2/24*360-90)*Math.PI/180;
+    s+='<line x1="200" y1="200" x2="'+(200+176*Math.cos(ta)).toFixed(1)+'" y2="'+(200+176*Math.sin(ta)).toFixed(1)+'" stroke="#fff" stroke-width="2"/><circle cx="200" cy="200" r="4" fill="#fff"/>';
+    $('#roDial').innerHTML=s;
+    $('#roNow').textContent=fmt(now,tz,{hour:'2-digit',minute:'2-digit',hour12:false});
+    $('#roCity').textContent=name;
+    $('#roIst').textContent='Site: '+fmt(now,'Asia/Kolkata',{hour:'2-digit',minute:'2-digit',hour12:false})+' IST';
+    var oS=nextIst(1,9,30),oE=nextIst(1,19,0),fr=nextIst(5,18,0);
+    var rows=[
+      ['KRS office open','Monday to Saturday, 9:30 to 19:00 in Bengaluru',fmt(oS,tz,{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})+' to '+fmt(oE,tz,{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})],
+      ['Weekly progress on WhatsApp','Photos and the week ahead, every Friday evening IST',fmt(fr,tz,{weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})],
+      ['Gate walk on video','At each of the six quality gates, booked in your overlap','By appointment'],
+      ['Home Passport','Test records and photos, filed as each gate is signed','Open any time']];
+    $('#roRows').innerHTML=rows.map(function(r){return '<div class="ro-r"><div><b>'+r[0]+'</b><small>'+r[1]+'</small></div><span class="t">'+r[2]+'</span></div>'}).join('');
+    function hm(x){x=(x%24+24)%24;return String(Math.floor(x)).padStart(2,'0')+':'+String(Math.round((x%1)*60)).padStart(2,'0')}
+    $('#roBest').innerHTML=tz==='Asia/Kolkata'?'You are on site time. Call between <b>09:30 and 19:00</b>, Monday to Saturday.':(ov.length?'Best time to reach us from '+name+': <b>'+segs.map(function(g){return hm(g[0])+' to '+hm(g[1])}).join('</b> or <b>')+'</b> your time, on Bengaluru working days. That is '+(ov.length/4).toString().replace(/\.0$/,'')+' hours of overlap.':'Office hours fall in your night. We book gate walks at <b>'+hm(W0+.5)+' or '+hm(W1-1.5)+'</b> your time instead.');
+  }
+  sel.addEventListener('change',render);render();setInterval(render,60000);
+})();
+
+/* ---------- v1.9: FAQ ---------- */
+(function(){
+  var L=$('#faqL');
+  L.innerHTML=FAQ.map(function(f,i){return '<details'+(i===0?' open':'')+'><summary>'+f[0]+'</summary><div class="a">'+f[1]+'</div></details>'}).join('');
+  function filt(){var q=$('#faqQ').value.trim().toLowerCase(),n=0;$$('details',L).forEach(function(d){var m=!q||d.textContent.toLowerCase().indexOf(q)>-1;d.style.display=m?'':'none';if(m)n++;if(q&&m)d.open=true});$('#faqN').textContent=q?n+' of '+FAQ.length+' questions':FAQ.length+' questions'}
+  $('#faqQ').addEventListener('input',filt);filt();
+})();
 
 /* ---------- v1.2: the journey ---------- */
 var JF=[
