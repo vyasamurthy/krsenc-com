@@ -721,6 +721,46 @@ input[type=range]{width:100%;accent-color:var(--navy)}
 }
 @media (max-width:680px){.cal{grid-template-columns:repeat(3,1fr)}.pp-main{padding:18px}.phone{height:460px}}
 
+/* ===== v1.6 ===== */
+.ledger-det{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #2A3550;min-height:64px}
+.ledger-det>div{padding:14px 18px;min-width:0}
+.ledger-det>div+div{border-left:1px solid #2A3550}
+.ledger-det h6{font:500 10px/1.4 var(--fm);letter-spacing:.12em;text-transform:uppercase;color:#E58A63;margin-bottom:6px}
+.ledger-det .g h6{color:#7FC3A0}
+.ledger-det p{font-size:14px;color:#C9CDD6}
+.ld-hint{grid-column:1/-1;padding:14px 18px;font:400 12px/1.5 var(--fm);color:#8E97AB}
+.ev{cursor:pointer;transition:background .2s}.ev:hover{background:#18213A}
+.hold{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.hold b{font:500 10.5px/1 var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--ok);display:block;margin-bottom:8px}
+.hold ol{list-style:none;counter-reset:h;display:grid;gap:4px}
+.tab .hold li{counter-increment:h;font:400 13.5px/1.45 var(--fs);color:#2A3142;display:grid;grid-template-columns:24px 1fr;border:0;padding:2px 0;background:none}
+.hold li:before{content:counter(h,decimal-leading-zero);font:500 11px/1.6 var(--fm);color:var(--ok)}
+.tl-bar{display:flex;flex-wrap:wrap;gap:16px 24px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--paper)}
+.tl-bar label{font:500 10.5px/1 var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--slate);display:flex;gap:8px;align-items:center}
+.tl-bar select{font:500 13px/1 var(--fm);padding:8px 10px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.tl-bar .end{margin-left:auto;text-align:right}
+.tl-bar .end b{display:block;font:400 26px/1.1 var(--fd);color:var(--navy);text-transform:none;letter-spacing:0}
+.tl-note{padding:12px 20px;border-top:1px solid var(--line);font-size:14.5px;color:#2A3142}
+.tl-note b{font-weight:500;color:var(--navy)}
+.g-track .mon{position:absolute;top:4px;bottom:4px;background:rgba(46,106,158,.12)}
+.g-track .g-bar{z-index:1}
+.mon-key{display:inline-flex;gap:6px;align-items:center}.mon-key i{width:14px;height:10px;background:rgba(46,106,158,.25)}
+.dc-key em.p{background:#B9C0D3}
+.wr{margin-top:20px;border-top:1px solid var(--line);padding-top:14px;display:grid;gap:8px}
+.wr h6{font:500 10.5px/1 var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:4px}
+.wr div{display:grid;grid-template-columns:1fr 160px 110px;gap:10px;align-items:center;font-size:13.5px}
+.wr i{height:7px;background:var(--paper2);position:relative;display:block}
+.wr i b{position:absolute;inset:0 auto 0 0}
+.wr span:last-child{font:400 12px var(--fm);text-align:right;color:var(--slate)}
+.pp-q{position:relative}
+.pp-q input{width:100%;font:400 14px/1.3 var(--fs);padding:10px 12px;border:1px solid #3A4663;background:rgba(255,255,255,.06);color:#fff}
+.pp-q input::placeholder{color:#8E97AB}
+.pp-res{display:grid;gap:4px;margin-top:6px}
+.pp-res button{text-align:left;font-size:12.5px;line-height:1.35;color:#E8E4DA;background:rgba(255,255,255,.06);padding:8px 10px}
+.pp-res button em{display:block;font:500 9.5px/1.4 var(--fm);font-style:normal;letter-spacing:.1em;text-transform:uppercase;color:var(--ochre-l)}
+.pp-res p{font-size:12px;color:#8E97AB}
+@media (max-width:680px){.ledger-det{grid-template-columns:1fr}.ledger-det>div+div{border-left:0;border-top:1px solid #2A3550}.wr div{grid-template-columns:1fr 80px;}.wr div span:last-child{grid-column:1/-1;text-align:left}.tl-bar .end{margin-left:0;text-align:left}}
+
 /* responsive */
 @media (max-width:1020px){
   .pv-g{grid-template-columns:1fr 1fr}.pv-g>*:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid #2A3550}
@@ -869,7 +909,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
         </div>
       </div>
       <div class="verdict" id="verdict">Same building, same six trades. The difference is who holds the gaps between them.</div>
-      <div class="ledger-f">Illustrative. Built from coordination failures that commonly occur on multi-contract builds; not a record of a specific project. Day counts are indicative.</div>
+      <div class="ledger-f">Select an event to see its cause. Illustrative. Built from coordination failures that commonly occur on multi-contract builds; not a record of a specific project. Day counts are indicative.</div>
     </div>
 
     <div class="dcost reveal" id="dcost">
@@ -880,13 +920,14 @@ input[type=range]{width:100%;accent-color:var(--navy)}
         <div class="dc-f"><label>Project cost <b id="dcCostV"></b></label><input type="range" id="dcCost" min="25" max="5000" step="25" value="250"></div>
         <div class="dc-f"><label>Share financed by loan <b id="dcLoanV"></b></label><input type="range" id="dcLoan" min="0" max="90" step="5" value="60"></div>
         <div class="dc-f"><label>Loan interest rate <b id="dcRateV"></b></label><input type="range" id="dcRate" min="6" max="16" step="0.25" value="9.5"></div>
+        <div class="dc-f"><label>Rent you pay now while you wait <b id="dcPayV"></b></label><input type="range" id="dcPay" min="0" max="3" step="0.05" value="0.35"></div>
         <div class="dc-f"><label>Monthly rent or income once complete <b id="dcRentV"></b></label><input type="range" id="dcRent" min="0" max="50" step="0.25" value="3"></div>
       </div>
       <div class="dc-out">
         <div class="dc-big"><span id="dcWeek">-</span><small>Cost of one week of delay</small></div>
         <div>
-          <div class="dc-bar"><i id="dcBi" style="background:var(--ochre)"></i><i id="dcBr" style="background:#7FB1DB"></i></div>
-          <div class="dc-key" style="margin-top:8px"><span><em style="background:var(--ochre)"></em>Interest carried</span><span><em style="background:#7FB1DB"></em>Income not earned</span></div>
+          <div class="dc-bar"><i id="dcBi" style="background:var(--ochre)"></i><i id="dcBr" style="background:#7FB1DB"></i><i id="dcBp" style="background:#B9C0D3"></i></div>
+          <div class="dc-key" style="margin-top:8px"><span><em style="background:var(--ochre)"></em>Interest carried</span><span><em style="background:#7FB1DB"></em>Income not earned</span><span><em style="background:#B9C0D3"></em>Rent you keep paying</span></div>
         </div>
         <div class="dc-rows"><div><b id="dcMonth">-</b><span>Per month of delay</span></div><div><b id="dcDay">-</b><span>Per day of delay</span></div></div>
         <p class="dc-tie" id="dcTie"></p>
@@ -941,14 +982,21 @@ input[type=range]{width:100%;accent-color:var(--navy)}
     <div class="gantt pre reveal" id="gantt">
       <div class="gantt-h">
         <div class="seg" role="tablist"><button data-m="seq">Trades hired one after another</button><button data-m="int" class="on">KRS integrated</button></div>
-        <div class="dur"><b id="durN">40</b>relative weeks</div>
+        <div class="dur"><b id="durN">40</b>weeks</div>
+      </div>
+      <div class="tl-bar">
+        <label>Start <select id="tlStart" aria-label="Start month"></select></label>
+        <label>Size <span id="tlSize" style="color:var(--ink);text-transform:none;letter-spacing:0;font-size:13px"></span></label>
+        <span class="mon-key" style="font:500 10.5px/1 var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--slate)"><i></i>Monsoon, Jun to Sep</span>
+        <div class="end"><label style="justify-content:flex-end">Indicative handover</label><b id="tlEnd">-</b></div>
       </div>
       <div class="g-body">
         <div class="g-scale"><span></span><div class="ticks" id="ticks"></div></div>
         <div id="gRows"></div>
       </div>
       <div class="g-detail" id="gDetail"></div>
-      <div class="g-note">Illustrative relative timeline showing the effect of parallel MEP integration. Actual durations depend on scope, approvals and site conditions and are confirmed at planning stage.</div>
+      <div class="tl-note"><span id="tlNote"></span> <button class="jr-try" id="tlUse" style="margin:0 0 0 6px;border:0;border-bottom:1px solid var(--ochre);background:none">Add this timeline to my brief &rarr;</button></div>
+      <div class="g-note">Indicative timeline. Durations scale with the size set in the plot planner or brief, and the frame slows when it runs through the monsoon. Actual durations depend on scope, approvals and site conditions and are confirmed at planning stage.</div>
     </div>
 
     <div class="reveal" style="margin-top:80px">
@@ -1089,6 +1137,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
       <div class="pp-side">
         <div class="crest"><small>Home Passport &middot; sample</small>G + 3 residence<br>Kanakapura Road</div>
         <dl><div><dt>Handed over</dt><dd>Day 240 &middot; on the planned date</dd></div><div><dt>Built by</dt><dd>KRS Engineers and Contractors</dd></div><div><dt>Record</dt><dd id="ppCount">-</dd></div></dl>
+        <div class="pp-q"><input id="ppQ" type="search" placeholder="Search: terrace, pump, earthing" aria-label="Search the passport"><div class="pp-res" id="ppRes"></div></div>
         <div class="pp-tabs" id="ppTabs">
           <button class="on" data-p="map">Services in the walls</button>
           <button data-p="docs">Documents and tests</button>
@@ -1176,6 +1225,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
         <div style="display:grid;gap:8px">
           <label class="tog"><input type="checkbox" id="plVastu" checked> Vastu preferences</label>
           <label class="tog"><input type="checkbox" id="plHeat" checked> Heat and light</label>
+          <label class="tog"><input type="checkbox" id="plWind" checked> Seasonal winds</label>
         </div>
         <button class="btn btn-p" id="plSend" style="justify-content:center">Add this plot to my brief <span class="arrow">&rarr;</span></button>
       </div>
@@ -1188,6 +1238,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
         <div class="kp"><div><b id="plElev">-</b><span>Sun height</span></div><div><b id="plAz">-</b><span>Sun bearing</span></div><div><b id="plRise">-</b><span>Sunrise</span></div><div><b id="plSet">-</b><span>Sunset</span></div></div>
         <p class="insight" id="plIns1"></p>
         <p class="insight" id="plIns2"></p>
+        <p class="insight" id="plIns3" style="border-left-color:#2E6A9E"></p>
         <p class="pl-note">A first sketch to start a conversation, not a design. Vastu placements follow commonly used preferences and differ between practitioners. Setbacks shown are indicative; actual setbacks follow Bengaluru bylaws for your plot.</p>
       </div>
     </div>
@@ -1338,7 +1389,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
       <a href="https://www.google.com/maps/search/?api=1&amp;query=Krishna+Kamala+Enclave+Uttarahalli+Bengaluru+560061" target="_blank" rel="noopener"><span>Office</span><b>#52, &ldquo;Ahobala&rdquo;, Krishna Kamala Enclave, Uttarahalli, Bengaluru 560 061</b></a>
     </div>
   </div>
-  <div class="foot"><div class="wrap"><span>&copy; 2026 KRS Engineers and Contractors &middot; Turnkey construction &middot; Engineering &middot; Interiors</span><span>v1.5.0</span></div></div>
+  <div class="foot"><div class="wrap"><span>&copy; 2026 KRS Engineers and Contractors &middot; Turnkey construction &middot; Engineering &middot; Interiors</span><span>v1.6.0</span></div></div>
 </footer>
 
 <a class="wa" id="waFloat" href="https://wa.me/919845134986?text=Hello%20KRS%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp KRS</a>
@@ -1621,7 +1672,7 @@ function ledgerStep(){
   if(li>=EV.length){$('#verdict').classList.add('show');lTimer=setTimeout(function(){ledgerReset();ledgerLoop()},7000);return}
   var e=EV[li++];
   $('#wk').textContent='Week '+('0'+e.w).slice(-2);
-  addEv(bF,e.b,e.w);addEv(gF,e.g,e.w);
+  addEv(bF,e.b,e.w);addEv(gF,e.g,e.w);bF.firstChild.dataset.i=gF.firstChild.dataset.i=li-1;
   bc.C+=e.d[0];bc.R+=e.d[1];bc.D+=e.d[2];gc.C+=e.k[0];gc.R+=e.k[1];gc.D+=e.k[2];
   bump('bC',bc.C);bump('bR',bc.R);bump('bD',bc.D);bump('gC',gc.C);bump('gR',gc.R);bump('gD',gc.D);
   ledgerLoop();
@@ -1763,15 +1814,16 @@ function docsList(){
 }
 function briefText(){
   var p=planList().filter(function(x){return x.on}).map(function(x,i){return (i+1)+'. '+x.t}).join('\n');
-  return 'KRS project brief '+bid+'\n'+(B.nm?'From: '+B.nm+'\n':'')+'Project: '+(B.sector||'-')+' / '+(B.type||'-')+(B.plot?'\nPlot: '+B.plot:'')+'\nArea: ~'+B.area.toLocaleString('en-IN')+' sq ft'+(B.type!=='Interior fit-out'?', '+(B.floors?'G + '+B.floors:'ground only'):'')+'\nDisciplines: '+(Object.keys(DN).filter(function(k){return B.disc[k]}).map(function(k){return DN[k]}).join(', ')||'-')+'\nSite: '+(B.loc||'-')+'\nStart: '+B.when+(B.notes?'\nNotes: '+B.notes:'')+'\n\nStages:\n'+p;
+  return 'KRS project brief '+bid+'\n'+(B.nm?'From: '+B.nm+'\n':'')+'Project: '+(B.sector||'-')+' / '+(B.type||'-')+(B.plot?'\nPlot: '+B.plot:'')+(B.timeline?'\nTimeline: '+B.timeline:'')+(B.delay?'\nDelay cost: '+B.delay:'')+'\nArea: ~'+B.area.toLocaleString('en-IN')+' sq ft'+(B.type!=='Interior fit-out'?', '+(B.floors?'G + '+B.floors:'ground only'):'')+'\nDisciplines: '+(Object.keys(DN).filter(function(k){return B.disc[k]}).map(function(k){return DN[k]}).join(', ')||'-')+'\nSite: '+(B.loc||'-')+'\nStart: '+B.when+(B.notes?'\nNotes: '+B.notes:'')+'\n\nStages:\n'+p;
 }
 function renderDoc(fl){
+  if(typeof tlPlan==='function'&&$('#tlStart')&&$('#tlStart').options.length&&!renderDoc._in){renderDoc._in=1;drawG();renderDoc._in=0}
   var full=Object.keys(DN).every(function(k){return B.disc[k]});
   $('#dTitle').textContent=B.sector?(B.sector+(B.type?' · '+B.type:'')):'Your project';
   $('#dSub').textContent=!B.sector?'Start by choosing what you are building.':(full?'Full turnkey: all six disciplines under one contract.':'Partial scope: '+Object.keys(DN).filter(function(k){return B.disc[k]}).length+' of 6 disciplines with KRS.');
   $('#floorsF').style.display=B.type==='Interior fit-out'?'none':'';
   var kv=[['Area','~'+B.area.toLocaleString('en-IN')+' sq ft'+(B.type==='Interior fit-out'?'':' · '+(B.floors?'G + '+B.floors:'ground only'))],['Disciplines',Object.keys(DN).filter(function(k){return B.disc[k]}).map(function(k){return DN[k]}).join(', ')||'None selected'],['Site',B.loc||'To be shared'],['Start',B.when]];
-  if(B.plot)kv.unshift(['Plot',B.plot]);if(B.nm)kv.unshift(['Prepared for',B.nm]);
+  if(B.timeline)kv.push(['Timeline',B.timeline]);if(B.delay&&B.sector)kv.push(['Delay cost',B.delay.split(' (')[0]]);if(B.plot)kv.unshift(['Plot',B.plot]);if(B.nm)kv.unshift(['Prepared for',B.nm]);
   $('#dKv').innerHTML=kv.map(function(r){return'<dt>'+r[0]+'</dt><dd>'+esc(r[1])+'</dd>'}).join('');
   $('#dPlan').innerHTML=planList().map(function(x){return'<li class="'+(x.on?'':'off')+'">'+esc(x.t)+'</li>'}).join('');
   $('#dDocs').innerHTML=docsList().map(function(x){return'<li>'+esc(x)+'</li>'}).join('');
@@ -2177,6 +2229,137 @@ function coGroup(id,k){$$('#'+id+' button').forEach(function(b){b.addEventListen
 coGroup('coC','c');coGroup('coS','s');coGroup('coW','w');$('#coA').addEventListener('input',coCalc);
 plRender();
 
+/* ---------- v1.6: hero legend jumps to a stage ---------- */
+(function(){
+  $$('span',legend).forEach(function(sp,i){sp.style.cursor='pointer';sp.title=LAYERS[i].name;
+    sp.addEventListener('click',function(){clearT();heroReset();
+      for(var j=0;j<=i;j++)showLayer(HG,LAYERS[j].k,true);
+      if(i>=1)$$('.fl',hero).forEach(function(f){f.classList.add('on')});
+      if(i===LAYERS.length-1)hero.classList.add('lit');setCap(i)})});
+  legend.style.height='10px';$$('span',legend).forEach(function(s){s.style.height='10px';s.style.background='transparent';s.style.borderBottom='3px solid var(--paper2)'});
+})();
+
+/* ---------- v1.6: ledger events explain themselves ---------- */
+var WHY=[
+ ['Each discipline is drawn by a different party, on a different schedule, for a different contract.','Nothing yet. The cost arrives later, when the drawings meet on site.','One coordinated drawing set, checked as a whole before work starts.'],
+ ['The plumbing consultant never saw the structural drawing. The clash is found by the person who has to build it.','Two owner decisions and four days while the consultants agree.','The overlay check catches it on paper. Moving a riser on a drawing costs minutes.'],
+ ['Sleeves belong to the plumber, the pour belongs to the civil contractor. Neither owns the gap.','Core cutting four lines through a cured slab: a day of rework and five days of delay.','Sleeves and inserts are marked on the slab drawing and checked before the pour.'],
+ ['Each trade schedules itself. When one is late, the next one walks off to another site.','Six idle days, and a crew that may not come back when you need it.','One schedule: electrical works in the slab while masonry continues below.'],
+ ['Plaster happens before conduit because the plasterer was available first.','Walls chased open and re-plastered, and the finish is never quite the same.','Conduit routes are fixed before plaster in the integrated sequence.'],
+ ['The HVAC vendor sized ducts from a catalogue, not from the beam depths.','A lower ceiling than you paid for, or a redesign: six days either way.','Ceiling voids are sized against actual beam depths at design stage.'],
+ ['Waterproofing, plumbing and tiling are three contracts meeting in one sunken slab.','Three days of argument, broken tiles, and a leak that may come back.','Pressure and ponding tests before tiling, and one team owns the result.'],
+ ['The ceiling contractor is paid on completion, so the ceiling closes as soon as it can.','Panels reopened, re-fixed and repainted.','Drains are tested first; the ceiling closes only after the test is signed off.'],
+ ['Five vendors share one snag list. Every item is someone else’s.','Nine days of chasing at the very end, when you most want to move in.','One snag list, one owner, closed floor by floor before handover.']
+];
+(function(){
+  var det=document.createElement('div');det.className='ledger-det';det.id='ledDet';
+  det.innerHTML='<p class="ld-hint">Select any event in either lane to see why it happens, what it costs and how one team prevents it.</p>';
+  $('#verdict').parentNode.insertBefore(det,$('#verdict'));
+  function show(i){var e=EV[i],w=WHY[i];lPaused=true;$('#ledgerBtn').textContent='Play';clearTimeout(lTimer);
+    det.innerHTML='<div><h6>Week '+('0'+e.w).slice(-2)+' · why it happens</h6><p>'+w[0]+'</p></div><div><h6>What it costs the owner</h6><p>'+w[1]+'</p></div><div class="g"><h6>How one team prevents it</h6><p>'+w[2]+'</p></div>'}
+  [bF,gF].forEach(function(f){f.addEventListener('click',function(ev){var x=ev.target.closest('.ev');if(x&&x.dataset.i!==undefined)show(+x.dataset.i)})});
+})();
+
+/* ---------- v1.6: services inspection hold points ---------- */
+var HOLD={civil:['Soil and excavation check before footings','Reinforcement check before every pour','Cube tests on each slab at 7 and 28 days','Line, level and plumb check per floor'],
+ plumb:['Sleeve positions checked before the pour','Pressure test before walls close','48-hour ponding test on sunken slabs before tiling','Fall check on every drain line'],
+ elec:['Conduit route check before plaster','Insulation resistance test','Earthing test','Load balance check at the panel'],
+ hvac:['Sleeve and duct positions checked against beam depths','Refrigerant pipe leak test','Drain flow test before the ceiling closes','Commissioning test at handover'],
+ int:['Ceiling closure only after services are signed off','Level and alignment check for partitions and joinery','Moisture check before flooring'],
+ fin:['Surface preparation check before paint','Snag walk floor by floor','Final clean and handover inspection with the owner']};
+(function(){$$('.tab',tabs).forEach(function(t,i){var k=SV[i].k,g=t.querySelector('.gap');var d=document.createElement('div');d.className='hold';
+  d.innerHTML='<b>Inspection hold points</b><ol>'+HOLD[k].map(function(h){return'<li>'+h+'</li>'}).join('')+'</ol>';g.parentNode.insertBefore(d,g)})})();
+
+/* ---------- v1.6: timeline with real months, size and monsoon ---------- */
+var MN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+(function(){
+  var sel=$('#tlStart'),now=istNow();
+  for(var k=1;k<=12;k++){var d=new Date(now.getFullYear(),now.getMonth()+k,1),o=document.createElement('option');o.value=d.getFullYear()+'-'+d.getMonth();o.textContent=MN[d.getMonth()]+' '+d.getFullYear();sel.appendChild(o)}
+  sel.selectedIndex=2;
+})();
+function tlScale(){var a=B.area||3000,fl=B.floors||0;return Math.max(.7,Math.min(1.7,.72+a/11000+fl*.03))}
+function wkDate(y,m,w){return new Date(y,m,1+Math.round(w*7))}
+function monsoonWeeks(y,m,w0,w1){var n=0;for(var w=w0;w<w1;w++){var d=wkDate(y,m,w).getMonth();if(d>=5&&d<=8)n++}return n}
+function tlPlan(mode){
+  var p=$('#tlStart').value.split('-'),y=+p[0],m=+p[1],f=tlScale();
+  var st=ST.map(function(s){return[s[mode][0]*f,s[mode][1]*f]});
+  var mw=monsoonWeeks(y,m,st[2][0],st[2][1]),pen=mw*(mode==='seq'?.35:.15);
+  st=st.map(function(v,i){if(i===2)return[v[0],v[1]+pen];if(i===3)return[v[0],v[1]+pen];if(i>=4)return[v[0]+pen,v[1]+pen];return v});
+  var tot=Math.max.apply(null,st.map(function(v){return v[1]}));
+  return{st:st,tot:tot,y:y,m:m,mw:mw,pen:pen,end:wkDate(y,m,tot)}
+}
+drawG=function(){
+  var P=tlPlan(gMode),O=tlPlan(gMode==='int'?'seq':'int'),MAX=Math.ceil(Math.max(P.tot,O.tot)/4)*4;
+  $$('.g-row',gRows).forEach(function(r,i){var v=P.st[i],b=r.querySelector('.g-bar');b.style.left=(v[0]/MAX*100)+'%';b.style.width=((v[1]-v[0])/MAX*100)+'%';
+    var tr=r.querySelector('.g-track');$$('.mon',tr).forEach(function(x){x.remove()});
+    var st0=-1;for(var w=0;w<=MAX;w++){var mo=w<MAX?wkDate(P.y,P.m,w).getMonth():-1,inM=mo>=5&&mo<=8;if(inM&&st0<0)st0=w;if(!inM&&st0>=0){var sp=document.createElement('span');sp.className='mon';sp.style.left=(st0/MAX*100)+'%';sp.style.width=((w-st0)/MAX*100)+'%';tr.insertBefore(sp,b);st0=-1}}});
+  var tk2=$('#ticks');tk2.innerHTML='';var last=-1;
+  for(var w=0;w<=MAX;w++){var d=wkDate(P.y,P.m,w);if(d.getMonth()!==last&&(d.getMonth()-P.m+12)%(innerWidth<680?4:2)===0){last=d.getMonth();var s2=document.createElement('span');s2.style.left=(w/MAX*100)+'%';s2.textContent=MN[d.getMonth()]+(d.getMonth()===0||w===0?' '+String(d.getFullYear()).slice(2):'');tk2.appendChild(s2)}else if(d.getMonth()!==last)last=d.getMonth()}
+  countTo($('#durN'),Math.round(P.tot),700);
+  var e1=P.end,e2=O.end,dw=Math.round(Math.abs(P.tot-O.tot));
+  $('#tlEnd').textContent=MN[e1.getMonth()]+' '+e1.getFullYear();
+  $('#tlNote').innerHTML=(P.mw?'The frame meets <b>'+P.mw+' monsoon weeks</b> on this start date, adding about '+Math.round(P.pen)+' weeks. ':'The frame is up before the June rains on this start date. ')+
+    (gMode==='int'?'Hiring trades one after another would hand over around <b>'+MN[e2.getMonth()]+' '+e2.getFullYear()+'</b>, about '+dw+' weeks later.':'The integrated plan would hand over around <b>'+MN[e2.getMonth()]+' '+e2.getFullYear()+'</b>, about '+dw+' weeks sooner.');
+  $('#tlSize').textContent=(B.floors?'G + '+B.floors:'Ground only')+' · ~'+(B.area||3000).toLocaleString('en-IN')+' sq ft';
+  var I=tlPlan('int');B.timeline='Start '+MN[I.m]+' '+I.y+', indicative handover '+MN[I.end.getMonth()]+' '+I.end.getFullYear();
+  renderDetail();
+};
+$('#tlStart').addEventListener('change',function(){drawG();renderDoc()});
+$('#tlUse').addEventListener('click',function(){drawG();renderDoc(true);document.getElementById('brief').scrollIntoView({behavior:RM?'auto':'smooth'})});
+drawG();
+
+/* ---------- v1.6: delay cost includes rent paid while waiting ---------- */
+dcWeekly=function(){var c=+$('#dcCost').value,ln=+$('#dcLoan').value,r=+$('#dcRate').value,rent=+$('#dcRent').value,rp=+$('#dcPay').value;return c*ln/100*r/100/52+rent*12/52+rp*12/52};
+dcCalc=function(){
+  var c=+$('#dcCost').value,ln=+$('#dcLoan').value,r=+$('#dcRate').value,rent=+$('#dcRent').value,rp=+$('#dcPay').value;
+  $('#dcCostV').textContent=inr(c);$('#dcLoanV').textContent=ln+'%';$('#dcRateV').textContent=r+'% p.a.';$('#dcRentV').textContent=inr(rent);$('#dcPayV').textContent=inr(rp);
+  var wi=c*ln/100*r/100/52,wr=rent*12/52,wp=rp*12/52,w=wi+wr+wp;
+  $('#dcWeek').textContent=inr(w);$('#dcMonth').textContent=inr(w*52/12);$('#dcDay').textContent=inr(w/7);
+  var t=w||1;$('#dcBi').style.width=(wi/t*100)+'%';$('#dcBr').style.width=(wr/t*100)+'%';$('#dcBp').style.width=(wp/t*100)+'%';
+  $('#dcTie').innerHTML='The owner-coordinated build in the ledger above lost '+ledgerDays+' days. At your numbers, that is <b style="color:var(--ochre-l);font-weight:400">'+inr(w/7*ledgerDays)+'</b>, before any rework is paid for.';
+  B.delay=inr(w)+' per week of delay (interest '+inr(wi)+', income '+inr(wr)+', rent paid '+inr(wp)+')';
+  if(typeof renderDoc==='function'&&typeof bid!=='undefined')renderDoc();
+};
+$('#dcPay').addEventListener('input',dcCalc);dcCalc();
+
+/* ---------- v1.6: seasonal winds on the plot ---------- */
+function windFor(n){if(n>=121&&n<=273)return{from:262,lbl:'Monsoon winds from the west',txt:'From June to September the wind comes mostly from the west. Openings on the west and east walls let it cross the house; shade the west openings from afternoon sun.'};
+  if(n>=274||n<=59)return{from:80,lbl:'Winter winds from the east',txt:'From October to February the wind comes mostly from the east. East-facing windows and a west-side outlet keep rooms ventilated without the afternoon heat.'};
+  return{from:null,lbl:'Light, variable winds',txt:'In March and April winds are light and variable. Rely on stack ventilation: a stair or light well that lets warm air rise and leave at the top.'}}
+var plRender0=plRender;
+plRender=function(){plRender0();
+  var n=PL.n==='today'?doy():PL.n,W=windFor(n),show=$('#plWind').checked;
+  if(show&&W.from!==null){var g=se('g',{opacity:.75}),a=rad(W.from);
+    for(var k=-2;k<=2;k++){var px=Math.cos(a)*k*55,py=Math.sin(a)*k*55,sx=300+Math.sin(a)*250+px,sy=300-Math.cos(a)*250+py,ex=300-Math.sin(a)*120+px,ey=300+Math.cos(a)*120+py;
+      se('line',{x1:sx,y1:sy,x2:ex,y2:ey,stroke:'#2E6A9E','stroke-width':1.6,'stroke-dasharray':'8 6'},g);
+      var hx=ex,hy=ey,ang=Math.atan2(ey-sy,ex-sx);se('path',{d:'M'+hx+' '+hy+' L'+(hx-10*Math.cos(ang-.4))+' '+(hy-10*Math.sin(ang-.4))+' M'+hx+' '+hy+' L'+(hx-10*Math.cos(ang+.4))+' '+(hy-10*Math.sin(ang+.4)),stroke:'#2E6A9E','stroke-width':1.6,fill:'none'},g)}
+    var t=se('text',{x:300+Math.sin(a)*228,y:300-Math.cos(a)*228+(Math.cos(a)>0?-10:16),'text-anchor':'middle','font-family':'IBM Plex Mono,monospace','font-size':10,fill:'#2E6A9E'});t.textContent=W.lbl.toUpperCase()}
+  $('#plIns3').textContent=show?W.txt:'';
+};
+$('#plWind').addEventListener('change',plRender);plRender();
+
+/* ---------- v1.6: passport search and warranty countdown ---------- */
+(function(){
+  var HO=new Date(istNow().getFullYear()-1,istNow().getMonth()-2,12);
+  var WR=[['Terrace waterproofing',10],['Water pumps',2],['AC compressors',5],['Electrical panel and wiring workmanship',1]];
+  var box=document.createElement('div');box.className='wr';
+  box.innerHTML='<h6>Warranties running (sample terms)</h6>'+WR.map(function(w){var end=new Date(HO.getFullYear()+w[1],HO.getMonth(),HO.getDate()),left=Math.round((end-istNow())/864e5),tot=w[1]*365;
+    return'<div><span>'+w[0]+'</span><i><b style="width:'+Math.max(0,Math.min(100,left/tot*100))+'%;background:'+(left<0?'#A9512B':left<120?'var(--ochre)':'var(--ok)')+'"></b></i><span>'+(left<0?'Expired':left<120?left+' days left':Math.round(left/30)+' months left')+'</span></div>'}).join('');
+  $('#ppDocs').parentNode.appendChild(box);
+  var IDX=[];
+  $$('#ppDocs tr').forEach(function(r){IDX.push({t:r.querySelector('b').textContent,p:'docs',l:'Document'})});
+  $$('#ppCal span').forEach(function(s){IDX.push({t:s.parentNode.querySelector('b').textContent+' · '+s.textContent,p:'care',l:'Care'})});
+  $$('#ppLife li').forEach(function(s){IDX.push({t:s.querySelector('b').textContent+' \u00b7 '+s.lastChild.textContent,p:'life',l:'Timeline'})});
+  ['Water supply','Drainage','Electrical conduit','AC lines and drains','No-drill zones'].forEach(function(n){IDX.push({t:n+' route on the first floor plan',p:'map',l:'Services'})});
+  WR.forEach(function(w){IDX.push({t:w[0]+' warranty',p:'docs',l:'Warranty'})});
+  var q=$('#ppQ'),res=$('#ppRes');
+  q.addEventListener('input',function(){var v=q.value.trim().toLowerCase();if(v.length<2){res.innerHTML='';return}
+    var hits=IDX.filter(function(x){return x.t.toLowerCase().indexOf(v)>=0}).slice(0,6);
+    res.innerHTML=hits.length?hits.map(function(h){return'<button data-p="'+h.p+'"><em>'+h.l+'</em>'+esc(h.t)+'</button>'}).join(''):'<p>No match. Try terrace, pump, earthing or drain.</p>'});
+  res.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=$('#ppTabs button[data-p="'+b.dataset.p+'"]');if(t)t.click();res.innerHTML='';q.value=''});
+})();
+
+['dcCost','dcLoan','dcRate','dcRent'].forEach(function(i){$('#'+i).addEventListener('input',dcCalc)});['plVastu','plHeat'].forEach(function(i){$('#'+i).addEventListener('change',plRender)});
 /* ---------- v1.2: the journey ---------- */
 var JF=[
  {a:'Act I · Finding someone to trust',t:'The late-night search',q:'Turnkey builder Bengaluru. Third night in a row.',b:'{Who} find a building that draws itself, trade by trade. At night in Bengaluru it turns to blueprint with the lights on. It is the first site that seems to be awake when {they} are.',tr:['Replay the drawing','#top'],st:'empty',night:1,ph:'Pre-construction',d:'Week −12',e:34,x:38,live:'Searching'},
