@@ -835,6 +835,38 @@ input[type=range]{width:100%;accent-color:var(--navy)}
 }
 @media (prefers-reduced-motion:reduce){.intro{display:none}.wr-h .w{opacity:1;transform:none}}
 
+/* ===== v1.8 hero ===== */
+.intent{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:22px}
+.intent span{font:500 10.5px/1 var(--fm);letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-right:6px}
+.intent button{font:500 13px/1 var(--fs);padding:9px 13px;border:1px solid var(--line);background:var(--card);color:var(--ink);transition:all .25s}
+.intent button:hover{border-color:var(--navy)}
+.intent button.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.welcome[hidden]{display:none}
+.welcome{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--ochre);padding:12px 14px;margin-bottom:20px;font-size:14px;animation:evin .6s var(--ease)}
+.welcome b{font-weight:500}
+.welcome .mono{font-size:12px;color:var(--ochre-d)}
+.welcome button{font:500 12px/1 var(--fm);letter-spacing:.04em;padding:8px 10px;border:1px solid var(--navy);color:var(--navy)}
+.welcome button.p{background:var(--navy);color:#fff}
+.ostat{display:flex;align-items:center;gap:9px;margin-top:16px;font-size:14px;color:var(--slate)}
+.ostat i{width:9px;height:9px;border-radius:50%;background:#B9AE9B;flex:none}
+.ostat.open i{background:var(--ok);box-shadow:0 0 0 0 rgba(47,107,79,.5);animation:ping 2s infinite}
+.ostat b{color:var(--ink);font-weight:500}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(47,107,79,0)}100%{box-shadow:0 0 0 0 rgba(47,107,79,0)}}
+.hb-wrap{position:relative}
+.hphoto{position:absolute;inset:0;margin:0;clip-path:inset(100% 0 0 0);transition:clip-path 1.6s cubic-bezier(.7,0,.2,1);cursor:pointer;background:var(--ink)}
+.hphoto.on{clip-path:inset(0 0 0 0)}
+.hphoto img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.08);transition:transform 6s var(--ease)}
+.hphoto.on img{transform:scale(1)}
+.hphoto figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 12px;background:linear-gradient(transparent,rgba(15,22,38,.85));color:#fff;font:400 18px/1.25 var(--fd)}
+.hphoto figcaption small{display:block;font:500 10px/1.6 var(--fm);letter-spacing:.12em;text-transform:uppercase;color:#C9CDD6}
+.hphoto .pvn{top:12px;bottom:auto;right:12px}
+.sheet.photo .readout,.sheet.photo .xh{display:none}
+.hero h1.swap .ln span{animation:rise 1s var(--ease) forwards;transform:translateY(105%)}
+.hero .lede{transition:opacity .35s}
+.hero .lede.fade{opacity:0}
+.hero-g .sheet{transform-origin:50% 0;will-change:transform}
+.hero{overflow:hidden;overflow:clip}
+
 /* responsive */
 @media (max-width:1020px){
   .pv-g{grid-template-columns:1fr 1fr}.pv-g>*:nth-child(3){grid-column:1/-1;border-left:0;border-top:1px solid #2A3550}
@@ -918,20 +950,23 @@ input[type=range]{width:100%;accent-color:var(--navy)}
   <div class="wrap">
     <div class="hero-g">
       <div>
+        <div class="welcome" id="welcome" hidden></div>
+        <div class="intent" id="intent"><span>I am building</span><button data-i="home">a home</button><button data-i="office">an office or shop</button><button data-i="hotel">a hotel</button></div>
         <div class="eyebrow">Turnkey construction &middot; Bengaluru</div>
-        <h1><span class="ln"><span>Six trades.</span></span><span class="ln"><span>One contract.</span></span><span class="ln"><span><em>One team accountable.</em></span></span></h1>
-        <p class="lede">Most building owners end up managing their own project: a civil contractor, a plumber, an electrician, an HVAC vendor, an interiors firm and a painter, and every gap between them lands on the owner's phone. KRS Engineers and Contractors takes all six disciplines under one roof, from concept to handover.</p>
+        <h1 id="heroH1"><span class="ln"><span>Six trades.</span></span><span class="ln"><span>One contract.</span></span><span class="ln"><span><em>One team accountable.</em></span></span></h1>
+        <p class="lede" id="heroLede">Most building owners end up managing their own project: a civil contractor, a plumber, an electrician, an HVAC vendor, an interiors firm and a painter, and every gap between them lands on the owner's phone. KRS Engineers and Contractors takes all six disciplines under one roof, from concept to handover.</p>
         <div class="cta">
-          <a class="btn btn-p" href="#brief">Plan your build <span class="arrow">&rarr;</span></a>
+          <a class="btn btn-p" id="heroCta" href="#brief">Plan your build <span class="arrow">&rarr;</span></a>
           <a class="btn btn-g" href="#journey">Watch an eight-month build</a>
         </div>
+        <div class="ostat" id="ostat"></div>
         <div class="hero-meta"><span><b>300+</b> projects delivered</span><span><b>25+ years</b> engineering-led leadership</span><span><b>Uttarahalli</b>, Bengaluru</span></div>
       </div>
       <div class="sheet reveal">
         <div class="sheet-h"><span>Sheet A-01 &middot; Section through a typical build</span><span class="live" id="liveTag">Building</span></div>
         <div class="tstrip"><span id="clock">Bengaluru --:-- IST</span><div class="sunbar" id="sunbar" title="Scrub the time of day"><i id="sunDot"></i></div><div class="tmode" id="tmode"><button data-t="live" class="on">Live</button><button data-t="day">Day</button><button data-t="night">Night</button></div></div>
         <div class="readout" id="readout"></div>
-        <svg class="bld" id="heroBld" viewBox="0 0 520 560" role="img" aria-label="Animated section drawing of a building being constructed in stages: foundation, frame, plumbing, electrical, HVAC, interiors and finishing, then handover."></svg>
+        <div class="hb-wrap"><svg class="bld" id="heroBld" viewBox="0 0 520 560" role="img" aria-label="Animated section drawing of a building being constructed in stages: foundation, frame, plumbing, electrical, HVAC, interiors and finishing, then handover."></svg><figure class="hphoto" id="hPhoto" title="Back to the drawing"><img id="hImg" alt=""><span class="pvn" id="hPv"></span><figcaption id="hCap"></figcaption></figure></div>
         <div class="legend" id="legend"></div>
         <div class="sheet-f">
           <div class="stage-cap" id="stageCap"><b>STAGE 00</b>Setting out the grid</div>
@@ -1498,7 +1533,7 @@ input[type=range]{width:100%;accent-color:var(--navy)}
       <a href="https://www.google.com/maps/search/?api=1&amp;query=Krishna+Kamala+Enclave+Uttarahalli+Bengaluru+560061" target="_blank" rel="noopener"><span>Office</span><b>#52, &ldquo;Ahobala&rdquo;, Krishna Kamala Enclave, Uttarahalli, Bengaluru 560 061</b></a>
     </div>
   </div>
-  <div class="foot"><div class="wrap"><span>&copy; 2026 KRS Engineers and Contractors &middot; Turnkey construction &middot; Engineering &middot; Interiors</span><span>v1.7.0</span></div></div>
+  <div class="foot"><div class="wrap"><span>&copy; 2026 KRS Engineers and Contractors &middot; Turnkey construction &middot; Engineering &middot; Interiors</span><span>v1.8.0</span></div></div>
 </footer>
 
 <a class="wa" id="waFloat" href="https://wa.me/919845134986?text=Hello%20KRS%2C%20I%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp KRS</a>
@@ -1721,6 +1756,7 @@ function heroPlay(){
   });
   timers.push(setTimeout(function(){hero.classList.add('lit')},t));
   timers.push(setTimeout(function(){hero.classList.add('stamped');$$('span',legend).forEach(function(s){s.className='done'});cap.innerHTML='<b>STAGE 07 / HANDOVER</b>Quality check, client walkthrough and documentation';liveTag.textContent='Handed over'},t+700));
+  timers.push(setTimeout(function(){if(typeof heroPhoto==='function')heroPhoto(true)},t+2400));
 }
 // civil floors use parent .on: make .fl children respond only when fl.on
 var css=document.createElement('style');css.textContent='.bld .ly-civil.on .fl .dr{stroke-dashoffset:1}.bld .ly-civil.on .fl .fi{opacity:0}.bld .ly-civil.on .fl.on .dr{stroke-dashoffset:0}.bld .ly-civil.on .fl.on .fi{opacity:1}';document.head.appendChild(css);
@@ -2564,6 +2600,83 @@ $('#plWind').addEventListener('change',plRender);plRender();
       el.style.transform='perspective(900px) rotateX('+((.5-y)*8)+'deg) rotateY('+((x-.5)*10)+'deg) translateZ(0)';el.style.setProperty('--gx',(x*100)+'%');el.style.setProperty('--gy',(y*100)+'%')});
     el.addEventListener('pointerleave',function(){el.style.transform=''})});
 })();
+
+/* ---------- v1.8: hero drawing dissolves into the delivered building ---------- */
+var HINT={none:{img:0},home:{img:4},office:{img:0},hotel:{img:5}},heroIntent='none';
+function heroPhoto(on){
+  var f=$('#hPhoto'),sh=$('.hero .sheet');if(!f)return;
+  if(on){var p=PJ[HINT[heroIntent].img];$('#hImg').src=p.img;
+    $('#hCap').innerHTML='<small>'+esc(p.st)+(p.pv?' &middot; delivered by KRS':' &middot; design render shown')+'</small>'+esc(p.t)+', '+esc(p.c);
+    $('#hPv').textContent=p.pv?'SITE PHOTO':'DESIGN RENDER';$('#hPv').className='pvn'+(p.pv?' ph':'');
+    liveTag.textContent=p.st==='Completed'?'Delivered':'In the pipeline'}
+  f.classList.toggle('on',!!on);sh.classList.toggle('photo',!!on)}
+(function(){var _r=heroReset;heroReset=function(){_r();heroPhoto(false)};
+  $('#hPhoto').addEventListener('click',function(){heroPhoto(false);cap.innerHTML='<b>HANDOVER</b>Select Replay to build it again'})})();
+
+/* ---------- v1.8: what are you building ---------- */
+var INT={
+ none:{h:['Six trades.','One contract.','One team accountable.'],l:null,c:['Plan your build','#brief'],s:null},
+ home:{h:['Your home.','One contract.','Moved in on the date you planned.'],l:'Most families end up managing six contractors and a phone that never stops ringing. KRS takes civil, plumbing, electrical, air conditioning, interiors and finishing under one roof, so your only job is choosing the tiles.',c:['Plan your plot','#planner'],s:'Residential'},
+ office:{h:['Your building.','One contract.','Open for business on time.'],l:'Every week a commercial building is not handed over is a week of rent nobody pays. KRS delivers structure, services, facade and fit-out under one contract, sequenced so tenants move in on the date in the lease.',c:['Start your brief','#brief'],s:'Commercial'},
+ hotel:{h:['Your hotel.','One contract.','Rooms ready for the first guest.'],l:'A hotel is the densest building there is: every room needs plumbing, power, air conditioning and finishes meeting behind the same wall. KRS designs and builds them together, from structure to the last guest-room detail.',c:['Start your brief','#brief'],s:'Hospitality'}
+};
+var heroLedeDefault=$('#heroLede').innerHTML;
+function setIntent(k,quiet){
+  heroIntent=k;var d=INT[k],h=$('#heroH1'),l=$('#heroLede'),c=$('#heroCta');
+  $$('#intent button').forEach(function(b){b.classList.toggle('on',b.dataset.i===k)});
+  h.innerHTML=d.h.map(function(t,i){return'<span class="ln"><span>'+(i===2?'<em>'+t+'</em>':t)+'</span></span>'}).join('');
+  if(!quiet){h.classList.remove('swap');void h.offsetWidth;h.classList.add('swap');l.classList.add('fade')}
+  setTimeout(function(){l.innerHTML=d.l||heroLedeDefault;l.classList.remove('fade')},quiet?0:300);
+  c.innerHTML=d.c[0]+' <span class="arrow">&rarr;</span>';c.setAttribute('href',d.c[1]);
+  if(d.s&&!B.sector){B.sector=d.s;$$('#oSector .opt').forEach(function(o){o.classList.toggle('on',o.dataset.v===d.s)});renderDoc()}
+  if($('#hPhoto').classList.contains('on'))heroPhoto(true);
+  try{localStorage.setItem('krsIntent',k)}catch(e){}
+}
+$$('#intent button').forEach(function(b){b.addEventListener('click',function(){setIntent(b.dataset.i===heroIntent?'none':b.dataset.i)})});
+(function(){var k=null;try{k=localStorage.getItem('krsIntent')}catch(e){}if(k&&INT[k]&&k!=='none')setIntent(k,true)})();
+
+/* ---------- v1.8: welcome back, with the saved brief ---------- */
+(function(){
+  var KEY='krsBrief';
+  function save(){if(!B.sector)return;try{localStorage.setItem(KEY,JSON.stringify({B:B,bid:bid,ts:Date.now()}))}catch(e){}}
+  var _rd=renderDoc;renderDoc=function(f){_rd(f);save()};
+  var s=null;try{s=JSON.parse(localStorage.getItem(KEY)||'null')}catch(e){}
+  if(!s||!s.B||!s.B.sector)return;
+  var b=s.B,w=$('#welcome'),desc=(b.type==='Interior fit-out'?'':(b.floors?'G + '+b.floors+' ':''))+b.sector.toLowerCase()+(b.type?' '+b.type.toLowerCase():'');
+  var days=Math.max(0,Math.round((Date.now()-s.ts)/864e5));
+  w.innerHTML='<span>Welcome back'+(b.nm?', <b>'+esc(b.nm)+'</b>':'')+'. Your '+esc(desc)+' brief <span class="mono">'+esc(s.bid)+'</span> is saved'+(days?' from '+days+' day'+(days>1?'s':'')+' ago':'')+'.</span><span style="display:flex;gap:8px"><button class="p" id="wbGo">Continue</button><button id="wbNew">Start fresh</button></span>';
+  w.hidden=false;
+  $('#wbGo').addEventListener('click',function(){
+    Object.keys(b).forEach(function(k){B[k]=b[k]});bid=s.bid;$('#bId').textContent=bid;
+    $$('#oSector .opt').forEach(function(o){o.classList.toggle('on',o.dataset.v===B.sector)});
+    $$('#oType .opt').forEach(function(o){o.classList.toggle('on',o.dataset.v===B.type)});
+    $('#area').value=B.area;$('#areaV').textContent=B.area.toLocaleString('en-IN')+' sq ft';
+    $('#floors').value=B.floors;$('#floorsV').textContent=B.floors?'G + '+B.floors:'Ground only';
+    ['loc','nm','notes'].forEach(function(k){if(B[k])$('#'+k).value=B[k]});
+    if(B.when)$('#when').value=B.when;
+    $$('#oDisc input').forEach(function(c){c.checked=!!B.disc[c.dataset.k]});
+    renderDoc(true);w.hidden=true;document.getElementById('brief').scrollIntoView({behavior:RM?'auto':'smooth'})});
+  $('#wbNew').addEventListener('click',function(){try{localStorage.removeItem(KEY)}catch(e){}w.hidden=true});
+})();
+
+/* ---------- v1.8: office open or closed, Bengaluru time ---------- */
+var OFFICE={open:9.5,close:19,days:[1,2,3,4,5,6]};
+function ostat(){
+  var n=istNow(),h=n.getHours()+n.getMinutes()/60,d=n.getDay(),open=OFFICE.days.indexOf(d)>=0&&h>=OFFICE.open&&h<OFFICE.close,el=$('#ostat');
+  el.classList.toggle('open',open);
+  if(open){el.innerHTML='<i></i><span><b>Office open now</b> until 7:00 pm IST. Call or WhatsApp to reach an engineer.</span>'}
+  else{var nd=d,k=0;do{nd=(nd+1)%7;k++}while(OFFICE.days.indexOf(nd)<0);
+    var when=(OFFICE.days.indexOf(d)>=0&&h<OFFICE.open)?'today':(k===1?'tomorrow':['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][nd]);
+    el.innerHTML='<i></i><span><b>Office closed.</b> Opens 9:30 am IST '+when+'. Send a WhatsApp anytime; we reply when we open.</span>'}
+}
+ostat();setInterval(ostat,60000);
+
+/* ---------- v1.8: the hero drawing tilts back as you scroll ---------- */
+(function(){if(RM)return;var sh=$('.hero .sheet'),tk=false;
+  function f(){tk=false;var p=Math.min(1,Math.max(0,scrollY/(innerHeight*.85)));
+    sh.style.transform=p<.002?'':'perspective(1200px) rotateX('+(p*32)+'deg) rotateZ('+(-p*7)+'deg) translateY('+(p*60)+'px) scale('+(1-p*.14)+')';
+    sh.style.opacity=1-p*.55}
+  addEventListener('scroll',function(){if(!tk){tk=true;requestAnimationFrame(f)}},{passive:true});f()})();
 
 /* ---------- v1.2: the journey ---------- */
 var JF=[
